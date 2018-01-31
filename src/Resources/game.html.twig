@@ -1,0 +1,20 @@
+<div class="game" data-for="{% name %}">
+    <div class="left">
+        <div class="picture" style="background-image: url('{% picture %}')"></div>
+        <div class="name">{% name %}</div>
+    </div>
+    <div class="middle">
+        <div class="description">{% description %}</div>
+    </div>
+    <div class="right">
+        <div class="button buy {% buyable %}">
+            <div class="purchase"></div>
+            <div class="price">{% price %} €</div>
+        </div>
+        <div class="button download {% downloadable %}" data-link="{% link %}"></div>
+        <div class="button install {% installable %}"></div>
+    </div>
+</div>
+<div id="{% name %}" class="video" style="display: none" data-src="{% video %}">
+    <video><source src="" type="video/mp4"></video>
+</div>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Virtual Deck</title>
+    <link rel="icon" type="image/x-icon" href="/2018/virtualdeck/images/favicon.ico" />
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/auth.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/profile.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/font-awesome.css">
+</head>
+
+<body>
+
+<header>
+    <div id="left">
+        <div id="hololens"></div>
+        <div id="username">{% username %}</div>
+    </div>
+    <div id="middle">
+        <div id="title">Paramètres du compte</div>
+    </div>
+    <div id="right">
+        <div id="home"></div>
+        <div id="logout"></div>
+    </div>
+</header>
+
+<div id="profile">
+    <div class="category">
+        <div class="description">
+            <div id="hololens_splash" class="splash"></div>
+            <div class="text">Informations HoloLens</div>
+        </div>
+        <div class="contents">
+            <div class="entry">
+                <label for="holoLensIpAddress">Adresse IP</label>
+                <input id="holoLensIpAddress" type="text" class="field" value="{% holoLensIpAddress %}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="description">
+            <div id="avatar" class="splash"></div>
+            <div class="text">Informations de compte</div>
+        </div>
+        <div class="contents">
+            <div class="entry">
+                <label for="pseudo">Pseudonyme</label>
+                <input id="pseudo" type="text" class="field" value="{% username %}"/>
+            </div>
+            <div class="entry">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="field"  value="{% email %}"/></div>
+            <div class="entry">
+                <label for="password_old">Ancien mot de passe</label>
+                <input id="password_old" type="password" class="field"/>
+            </div>
+            <div class="entry">
+                <label for="password">Nouveau mot de passe</label>
+                <input id="password" type="password" class="field"/>
+            </div>
+            <div class="entry">
+                <label for="password2">Confirmer le mot de passe</label>
+                <input id="password2" type="password" class="field" />
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="description">
+            <div id="purchase" class="splash"></div>
+            <div class="text">Informations de facturation</div>
+        </div>
+        <div class="contents">
+            <div class="entry">
+                <label for="firstname">Prénom</label>
+                <input id="firstname" type="text" class="field"  value="{% firstname %}"/>
+            </div>
+            <div class="entry">
+                <label for="lastname">Nom</label>
+                <input id="lastname" type="text" class="field"  value="{% lastname %}"/>
+            </div>
+            <div class="entry">
+                <label for="address">Adresse</label>
+                <input id="address" type="text" class="field"  value="{% address %}"/>
+            </div>
+            <div class="entry">
+                <label for="city">Ville</label>
+                <input id="city" type="text" class="field"  value="{% city %}"/>
+            </div>
+            <div class="entry">
+                <label for="postal">Code postal</label>
+                <input id="postal" type="text" class="field"  value="{% postal %}"/>
+            </div>
+            <div class="entry">
+                <label for="phone">Téléphone</label>
+                <input id="phone" type="text" class="field"  value="{% phone %}"/>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom">
+        <div id="feedback" class="inactive">...</div>
+        <div id="update">Mettre à jour</div>
+    </div>
+</div>
+
+</body>
+
+<footer>
+    <div id="logo"></div>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/auth/profile.js"></script>
+</footer>
+</html>

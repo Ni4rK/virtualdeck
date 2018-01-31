@@ -1,0 +1,39 @@
+#home {
+    margin-top: 5vh;
+    height: 95vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cart {
+    height: 60%;
+    box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2);
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.cart:hover {
+    box-shadow: 8px 8px 32px 8px rgba(0,0,0,0.8);
+}
+
+.splash {
+    background-color: #008CBA;
+    background-image: url("/2018/virtualdeck/images/cart.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80%;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    background-color: white;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+image {
+    transition: all linear 0.5s;
+}

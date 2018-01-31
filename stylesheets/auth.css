@@ -1,0 +1,85 @@
+@font-face {
+    font-family: sanchez;
+    src: url("/2018/virtualdeck/fonts/sanchez.otf");
+}
+
+body {
+    background-image: url("/2018/virtualdeck/images/background.jpg");
+    font-family: sanchez, fantasy;
+    margin: 0;
+}
+
+header {
+    background-color: white;
+    border-bottom: 2px solid #008CBA;
+    position: fixed;
+    top: 0;
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+#left {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+#middle {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-shadow: 1px 1px;
+    letter-spacing: 2px;
+}
+
+#right {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 5px;
+}
+
+#logo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-image: url("/2018/virtualdeck/images/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 130px;
+    height: 130px;
+}
+
+#hololens {
+    background-image: url("/2018/virtualdeck/images/hololens.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    background-position-y: center;
+    width: 30%;
+    height: 100%;
+}
+
+#logout {
+    background-image: url("/2018/virtualdeck/images/logout.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 90%;
+    height: 60%;
+    cursor: pointer;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Virtual Deck</title>
+    <link rel="icon" type="image/x-icon" href="/2018/virtualdeck/images/favicon.ico" />
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/auth.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/home.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/font-awesome.css">
+</head>
+
+<body>
+
+<header>
+    <div id="left">
+        <div id="hololens" class="hidden"></div>
+        <div id="username">{% username %}</div>
+    </div>
+    <div id="middle">
+        <div id="title">Menu principal</div>
+    </div>
+    <div id="right">
+        <div id="logout"></div>
+    </div>
+</header>
+
+<div id="home">
+    <div id="all_games" class="cart">
+        <div class="splash">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <image xlink:href="/2018/virtualdeck/images/tank.png" x="10" y="15" height="40" width="40"></image>
+                <image xlink:href="/2018/virtualdeck/images/dice.png" x="50" y="25" height="40" width="40"></image>
+                <image xlink:href="/2018/virtualdeck/images/chess.png" x="25" y="45" height="40" width="40"></image>
+            </svg>
+        </div>
+        <div class="title">Parcourir tous les jeux</div>
+    </div>
+    <div id="my_games" class="cart">
+        <div class="splash">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <image xlink:href="/2018/virtualdeck/images/cards.png" x="10" y="15" height="40" width="40"></image>
+                <image xlink:href="/2018/virtualdeck/images/city.png" x="50" y="25" height="40" width="40"></image>
+                <image xlink:href="/2018/virtualdeck/images/spacefighter.png" x="25" y="45" height="40" width="40"></image>
+            </svg>
+        </div>
+        <div class="title">Voir mes jeux</div>
+    </div>
+    <div id="profile" class="cart">
+        <div class="splash">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <image xlink:href="/2018/virtualdeck/images/settings.png" x="30" y="20" height="40" width="40"></image>
+                <image xlink:href="/2018/virtualdeck/images/hololens.png" x="30" y="50" height="40" width="40"></image>
+            </svg>
+        </div>
+        <div class="title">Paramètres du compte</div>
+    </div>
+</div>
+</body>
+
+<footer>
+    <div id="logo"></div>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/auth/home.js"></script>
+</footer>
+</html>

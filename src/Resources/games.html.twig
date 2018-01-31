@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Virtual Deck</title>
+    <link rel="icon" type="image/x-icon" href="/2018/virtualdeck/images/favicon.ico" />
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/auth.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/games.css"/>
+    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/font-awesome.css">
+</head>
+
+<body>
+
+<header>
+    <div id="left">
+        <div id="hololens"></div>
+        <div id="username">{% username %}</div>
+    </div>
+    <div id="middle">
+        <div id="title">{% listname %}</div>
+    </div>
+    <div id="right">
+        <div id="home"></div>
+        <div id="logout"></div>
+    </div>
+</header>
+
+<div id="games">
+    {% games %}
+    <div id="allgames" class="{% showall %}">Voir tous les jeux</div>
+</div>
+
+<div id="feedback" class="hidden"></div>
+</body>
+
+<footer>
+    <div id="logo"></div>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/2018/virtualdeck/scripts/auth/games.js"></script>
+</footer>
+</html>

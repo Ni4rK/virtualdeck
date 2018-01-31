@@ -1,0 +1,196 @@
+#games {
+    margin-top: 10vh;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#home {
+    background-image: url("/2018/virtualdeck/images/home.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 20%;
+    height: 60%;
+    cursor: pointer;
+
+}
+
+#logout {
+    background-image: url("/2018/virtualdeck/images/logout.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 20%;
+    height: 60%;
+    cursor: pointer;
+}
+
+#feedback {
+    position: fixed;
+    bottom: 0;
+    left: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 5vh;
+    background-color: #f44336;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+#feedback.success {
+    background-color: greenyellow;
+}
+
+.game {
+    width: 80%;
+    height: 10vh;
+    background-image: url("/2018/virtualdeck/images/cart.jpg");
+    color: white;
+    margin: 5vh auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 8px 8px 8px 8px rgba(0,0,0,0.2);
+    transition: all .5s;
+}
+
+.game:hover {
+    box-shadow: 8px 8px 32px 8px rgba(0,0,0,0.8);
+}
+
+.left {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    font-variant: small-caps;
+}
+
+.middle {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+
+.right {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 5px;
+    background-color: white;
+    color: black;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.button {
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
+    width: 25%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.button:hover {
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.4);
+}
+
+.blocked {
+    background-color: lightgrey;
+    cursor: default;
+}
+
+.authorized {
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+.picture {
+    width: 50%;
+    height: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.name {
+    width: 50%;
+    text-align: left;
+}
+
+.description {
+    text-align: left;
+    width: 100%;
+}
+
+.download {
+    background-image: url("/2018/virtualdeck/images/download.png");
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.install {
+    background-image: url("/2018/virtualdeck/images/install.png");
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.purchase {
+    width: 50%;
+    height: 60%;
+    background-image: url("/2018/virtualdeck/images/buy.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.price {
+    width: 50%;
+}
+
+#allgames {
+    width: 30vw;
+    min-width: fit-content;
+    margin: auto;
+    background-color: #008CBA;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-family: sanchez, fantasy;
+    font-size: 13px;
+    font-variant: small-caps;
+    font-weight: bold;
+    overflow: hidden;
+    letter-spacing: .1em;
+    transition: all 1s ease;
+}
+
+.video {
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    margin-top: -5vh;
+}
+
+video {
+    width: 100%;
+}

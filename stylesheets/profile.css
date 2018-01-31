@@ -1,0 +1,153 @@
+#profile {
+    margin-top: 10vh;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#home {
+    background-image: url("/2018/virtualdeck/images/home.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 20%;
+    height: 60%;
+    cursor: pointer;
+
+}
+
+#logout {
+    background-image: url("/2018/virtualdeck/images/logout.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 20%;
+    height: 60%;
+    cursor: pointer;
+}
+
+#bottom {
+    width: 60%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#feedback {
+    width: 30%;
+    min-width: fit-content;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-family: sanchez, fantasy;
+    font-size: 13px;
+    font-variant: small-caps;
+    font-weight: bold;
+    overflow: hidden;
+    letter-spacing: .1em;
+    transition: all 1s ease;
+}
+
+#feedback.error {
+    background-color: #f44336;
+}
+
+#feedback.success {
+    background-color: greenyellow;
+    color: black;
+}
+
+#feedback.inactive {
+    background-color: lightgrey;
+}
+
+#update {
+    width: 30%;
+    min-width: fit-content;
+    margin: auto;
+    background-color: #008CBA;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-family: sanchez, fantasy;
+    font-size: 13px;
+    font-variant: small-caps;
+    font-weight: bold;
+    overflow: hidden;
+    letter-spacing: .1em;
+    transition: all 1s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.category {
+    display: grid;
+    background-color: white;
+    border: 2px solid #008CBA;
+    border-radius: 5px;
+    padding: 15px;
+    width: 60%;
+    margin: 15px auto;
+}
+
+.entry {
+    margin: 5px auto;
+}
+
+label {
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding-top: 7px;
+}
+
+.field {
+    border: 2px solid #008CBA;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 13px;
+    transition: all 1s ease;
+    width: 60%;
+}
+
+.description {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.text {
+    width: 80%;
+}
+
+.splash {
+    width: 20%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#hololens_splash {
+    background-image: url("/2018/virtualdeck/images/hololens.png");
+}
+
+#avatar {
+    background-image: url("/2018/virtualdeck/images/avatar.jpg");
+}
+
+#purchase {
+    background-image: url("/2018/virtualdeck/images/buy.png");
+}
