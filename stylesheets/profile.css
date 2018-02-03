@@ -4,29 +4,6 @@
     align-items: center;
 }
 
-#home {
-    background-image: url("/2018/virtualdeck/images/home.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
-    width: 20%;
-    height: 60%;
-    cursor: pointer;
-
-}
-
-#logout {
-    background-image: url("/2018/virtualdeck/images/logout.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
-    width: 20%;
-    height: 60%;
-    cursor: pointer;
-}
-
 #bottom {
     width: 60%;
     margin: auto;
@@ -36,30 +13,31 @@
 }
 
 #feedback {
+    font-family: Arial, serif;
+    color: #234f63;
+    border: 0;
     width: 30%;
     min-width: fit-content;
     margin: auto;
-    cursor: pointer;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
-    font-family: sanchez, fantasy;
-    font-size: 13px;
-    font-variant: small-caps;
-    font-weight: bold;
-    overflow: hidden;
-    letter-spacing: .1em;
-    transition: all 1s ease;
 }
 
 #feedback.error {
-    background-color: #f44336;
+    background-color: lightcoral;
+}
+
+#feedback.error:hover {
+    background-color: #c66b6b;
 }
 
 #feedback.success {
-    background-color: greenyellow;
-    color: black;
+    background-color: lightgreen;
+}
+
+#feedback.success:hover {
+    background-color: #7acc7a;
 }
 
 #feedback.inactive {
@@ -70,20 +48,19 @@
     width: 30%;
     min-width: fit-content;
     margin: auto;
-    background-color: #008CBA;
-    cursor: pointer;
+    color: #234f63;
+    text-transform: uppercase;
+    background-color: #c0d6df;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
-    font-family: sanchez, fantasy;
-    font-size: 13px;
-    font-variant: small-caps;
-    font-weight: bold;
-    overflow: hidden;
-    letter-spacing: .1em;
-    transition: all 1s ease;
+    font-family: "Segoe UI", Helvetica, sans-serif;
 }
+
+#update:hover {
+    background-color: #adbfc6;
+}
+
 
 .hidden {
     display: none !important;
@@ -92,7 +69,7 @@
 .category {
     display: grid;
     background-color: white;
-    border: 2px solid #008CBA;
+    border: 2px solid #c0d6df;
     border-radius: 5px;
     padding: 15px;
     width: 60%;
@@ -111,7 +88,7 @@ label {
 }
 
 .field {
-    border: 2px solid #008CBA;
+    border: 2px solid #c0d6df;
     border-radius: 5px;
     cursor: pointer;
     padding: 5px;
@@ -141,13 +118,13 @@ label {
 }
 
 #hololens_splash {
-    background-image: url("/2018/virtualdeck/images/hololens.png");
+    background-image: url("http://virtualdeck.local.com/images/hololens.png");
 }
 
 #avatar {
-    background-image: url("/2018/virtualdeck/images/avatar.jpg");
+    background-image: url("http://virtualdeck.local.com/images/avatar.jpg");
 }
 
 #purchase {
-    background-image: url("/2018/virtualdeck/images/buy.png");
+    background-image: url("http://virtualdeck.local.com/images/buy.png");
 }

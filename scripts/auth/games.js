@@ -2,20 +2,24 @@ var loadedVideos = {};
 
 $(document).ready(function() {
 
-    $("#home").on("click", function() {
-        window.location.href = "/2018/virtualdeck/auth/home.php";
+    $("#homepage").on("click", function() {
+        window.location.href = "http://virtualdeck.local.com/auth/home.php";
+    });
+
+    $("#listing").on("click", function() {
+        window.location.href = "http://virtualdeck.local.com/auth/games.php";
     });
 
     $("#logout").on("click", function() {
-        window.location.href = "/2018/virtualdeck/auth/logout.php";
+        window.location.href = "http://virtualdeck.local.com/auth/logout.php";
     });
 
     $("#allgames").on("click", function() {
-        window.location.href = "/2018/virtualdeck/auth/games.php";
+        window.location.href = "http://virtualdeck.local.com/auth/games.php";
     });
 
     $("#left").on("click", function () {
-        window.location.href = "/2018/virtualdeck/auth/profile.php";
+        window.location.href = "http://virtualdeck.local.com/auth/profile.php";
     });
 
     $(".left, .middle").on("click", function() {
@@ -45,19 +49,24 @@ $(document).ready(function() {
         var game = $(this).parent().parent().data("for");
         console.log(game);
         $.ajax({
-            url: "/2018/virtualdeck/auth/purchase.php",
+            url: "http://virtualdeck.local.com/auth/purchase.php",
             data: {game: game},
             method: "post",
             success: function(data) {
                 if (data.success === true) {
-                    $("#feedback").removeClass("hidden").addClass("success").text(data.message);
-                    window.location.href = "/2018/virtualdeck/auth/games.php?filter=owned";
+                    if (data.stripped === false) {
+                        $("#feedback").removeClass("hidden").addClass("success").val(data.message);
+                        window.location.href = "http://virtualdeck.local.com/auth/games.php?filter=owned";
+                    } else {
+                        $("#games").css("display", "none");
+                        $("body").append(data.stripe);
+                    }
                 } else {
-                    $("#feedback").removeClass("hidden success").text(data.message);
+                    $("#feedback").removeClass("hidden success").val(data.message);
                 }
             },
             error: function() {
-                $("#feedback").removeClass("hidden success").text("Une erreur est survenue");
+                $("#feedback").removeClass("hidden success").val("An error occured");
             }
         });
     });
@@ -65,39 +74,72 @@ $(document).ready(function() {
     $(".download").on("click", function() {
         var game = $(this).parent().parent().data("for");
         $.ajax({
-            url: "/2018/virtualdeck/auth/download.php",
+            url: "http://virtualdeck.local.com/auth/download.php",
             data: {game: game},
             method: "post",
             success: function(data) {
                 if (data.success === true) {
                     window.open(data.link, '_blank');
                 } else {
-                    $("#feedback").removeClass("hidden success").text(data.message);
+                    $("#feedback").removeClass("hidden success").val(data.message);
                 }
             },
             error: function() {
-                $("#feedback").removeClass("hidden success").text("Une erreur est survenue");
+                $("#feedback").removeClass("hidden success").val("An error occured");
             }
         });
     });
 
     $(".install").on("click", function() {
         var game = $(this).parent().parent().data("for");
+        $("#hider").removeClass("hidden");
+        $("#loader").removeClass("hidden");
+        $("#feedback").addClass("hidden");
         $.ajax({
-            url: "/2018/virtualdeck/auth/install.php",
+            url: "http://virtualdeck.local.com/auth/install.php",
             data: {game: game},
             method: "post",
             success: function(data) {
+                $("#loader").addClass("hidden");
                 if (data.success === true) {
-                    window.open(data.link, '_blank');
+                    portalDevice(data.link);
                 } else {
-                    $("#feedback").removeClass("hidden success").text(data.message);
+                    $("#hider").addClass("hidden");
+                    $("#feedback").removeClass("hidden success").val(data.message);
                 }
             },
             error: function() {
-                $("#feedback").removeClass("hidden success").text("Une erreur est survenue");
+                $("#loader").addClass("hidden");
+                $("#hider").addClass("hidden");
+                $("#feedback").removeClass("hidden success").val("Une erreur est survenue");
             }
         });
     });
 
 });
+
+
+function portalDevice(address)
+{
+    var frame = $("<iframe></iframe>")
+        .css("zIndex", 1)
+        .css("width", "100vw")
+        .css("height", "100vh")
+        .css("position", "fixed")
+        .css("top", 0)
+        .css("left", 0)
+        .css("border", 0)
+        .attr("src", address)
+        .ready(function() {
+            $("#loader").addClass("hidden");
+            $("#microsoft").removeClass("hidden");
+            console.log("done");
+        })
+    ;
+    $("#games")
+        .css("opacity", "0")
+    ;
+    $("header")
+        .after(frame)
+    ;
+}

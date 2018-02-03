@@ -51,7 +51,7 @@ $(document).ready(function() {
             form.toggleClass("hidden");
             $(".text").toggleClass("hidden");
             $("#email").focus();
-            $(this).text("Inscription").css("backgroundColor", "#338436");
+            $(this).val("Sign up").css("backgroundColor", "lightgreen");
         } else {
             window.scrollTo(0, document.body.scrollHeight);
         }
@@ -61,18 +61,18 @@ $(document).ready(function() {
         var email = $("#email").val(),
             password = $("#password").val();
         $.ajax({
-            url: "/2018/virtualdeck/unauth/check.php",
+            url: "http://virtualdeck.local.com/unauth/check.php",
             method: "post",
             data: {email: email, password: password},
             success: function(data) {
                 if (data.success === true) {
-                    window.location.href = "/2018/virtualdeck/auth/home.php";
+                    window.location.href = "http://virtualdeck.local.com/auth/home.php";
                 } else {
-                    $("#error").removeClass("hidden").text(data.message);
+                    $("#error").removeClass("hidden").val(data.message);
                 }
             },
             error: function() {
-                $("#error").removeClass("hidden").text("Une erreur est survenue");
+                $("#error").removeClass("hidden").val("An error occured");
             }
         });
     });
@@ -89,7 +89,7 @@ $(document).ready(function() {
             postal = $("#sign_postal").val(),
             phone = $("#sign_phone").val();
         $.ajax({
-            url: "/2018/virtualdeck/unauth/sign.php",
+            url: "http://virtualdeck.local.com/unauth/sign.php",
             method: "post",
             data: {
                 username: username,
@@ -108,13 +108,13 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.success === true) {
-                    window.location.href = "/2018/virtualdeck/auth/home.php";
+                    window.location.href = "http://virtualdeck.local.com/auth/home.php";
                 } else {
-                    $("#error").removeClass("hidden").text(data.message);
+                    $("#error").removeClass("hidden").val(data.message);
                 }
             },
             error: function() {
-                $("#error").removeClass("hidden").text("Une erreur est survenue");
+                $("#error").removeClass("hidden").val("An error occured");
             }
         });
     });

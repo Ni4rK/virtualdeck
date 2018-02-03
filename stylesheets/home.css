@@ -18,8 +18,8 @@
 }
 
 .splash {
-    background-color: #008CBA;
-    background-image: url("/2018/virtualdeck/images/cart.jpg");
+    background-color: #c0d6df;
+    background-image: url("http://virtualdeck.local.com/images/cart.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     height: 80%;

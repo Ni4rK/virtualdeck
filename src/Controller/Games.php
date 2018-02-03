@@ -23,13 +23,13 @@ class Games
     {
         if ($this->security->isAuthenticated() === false) {
             return $this->response->render("error.html.twig", [
-                "error" => "Vous devez vous authentifier pour accéder à cette page"
+                "error" => "You are not authentified. Please connect first to see this page"
             ]);
         }
 
         if ($this->database->connect() === false) {
             return $this->response->render("error.html.twig", [
-                "error" => "Impossible de se connecter à la base de données"
+                "error" => "Can't connect to database"
             ]);
         }
 
@@ -45,12 +45,13 @@ class Games
                 continue;
             }
 
+            $price = $bought ? "Owned" : ($game->getPrice() == 0 ? "Get if (free)" : "Get it (" . $game->getPrice() . " €)");
             $listContents .= $this->response->render("game.html.twig", [
                 "name" => $game->getName(),
                 "picture" => $game->getPicture(),
                 "video" => $game->getVideo(),
                 "description" => $game->getDescription(),
-                "price" => $game->getPrice(),
+                "price" => $price,
                 "link" => $game->getLink(),
                 "buyable" => $bought ? "blocked" : "authorized",
                 "downloadable" => $bought ? "authorized" : "blocked",
@@ -60,7 +61,7 @@ class Games
 
         return $this->response->render("games.html.twig", [
             "username" => $user->getUsername(),
-            "listname" => $listOwned ? "Mes jeux" : "Tous les jeux",
+            "listname" => $listOwned ? "My games" : "All games",
             "games" => $listContents,
             "showall" => $listOwned ? "" : "hidden"
         ]);
@@ -69,32 +70,48 @@ class Games
     public function purchaseAction()
     {
         $data = [
-            "success" => true
+            "success" => true,
+			"stripped" => false
         ];
 
         if ($this->security->isAuthenticated() === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez être authentifié pour accéder à cette page";
+            $data["message"] = "You are not authentified. Please connect first to see this page";
             return $this->response->json($data);
         }
 
         if ($this->database->connect() === false) {
             $data["success"] = false;
-            $data["message"] = "Impossible de se connecter à la base de données";
+            $data["message"] = "Can't connect to the database";
             return $this->response->json($data);
         }
 
         $user = $this->security->getCurrentUser();
-        $gameName = Security::getDataPOST("game");
+		$gameName = Security::getDataPOST("game");
         if ($gameName === null || ($game = $this->database->getGame($gameName)) === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez saisir un nom de jeu valide";
+            $data["message"] = "This is not a valid game name";
             return $this->response->json($data);
         }
 
-        $this->database->addPossession($user, $game);
-        $data["message"] = "Achat effectué avec succès";
-        return $this->response->json($data);
+		$this->database->addPossession($user, $game);
+        if ($game->getPrice() == 0) {
+			$data["message"] = "Purchase successfully done !";
+		} else {
+			$data["stripped"] = true;
+			$data["stripe"] = $this->response->render("stripe.html.twig", [
+				"game" => $gameName,
+				"price" => $game->getPrice(),
+				"name" => !empty($user->getFirstname()) || !empty($user->getLastname()) ? $user->getFirstname() . " " . $user->getLastname() : "",
+				"email" => $user->getEmail(),
+				"phone" => $user->getPhone(),
+				"address" => $user->getAddress(),
+				"city" => $user->getCity(),
+				"postal" => $user->getPostal()
+			], [], false);
+		}
+
+		return $this->response->json($data);
     }
 
     public function downloadAction()
@@ -105,13 +122,13 @@ class Games
 
         if ($this->security->isAuthenticated() === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez être authentifié pour accéder à cette page";
+            $data["message"] = "You are not authentified. Please connect first to see this page";
             return $this->response->json($data);
         }
 
         if ($this->database->connect() === false) {
             $data["success"] = false;
-            $data["message"] = "Impossible de se connecter à la base de données";
+            $data["message"] = "Can't connect to the database";
             return $this->response->json($data);
         }
 
@@ -119,13 +136,13 @@ class Games
         $gameName = Security::getDataPOST("game");
         if ($gameName === null || ($game = $this->database->getGame($gameName)) === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez saisir un nom de jeu valide";
+            $data["message"] = "This is not a valid game name";
             return $this->response->json($data);
         }
 
         if (($possession = $this->database->getPossession($user, $game)) === false) {
             $data["success"] = false;
-            $data["message"] = "Vous n'avez pas encore acheté ce jeu";
+            $data["message"] = "You didn't purchase this game yet";
             return $this->response->json($data);
         }
 
@@ -141,13 +158,13 @@ class Games
 
         if ($this->security->isAuthenticated() === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez être authentifié pour accéder à cette page";
+            $data["message"] = "You are not authentified. Please connect first to see this page";
             return $this->response->json($data);
         }
 
         if ($this->database->connect() === false) {
             $data["success"] = false;
-            $data["message"] = "Impossible de se connecter à la base de données";
+            $data["message"] = "Can't connect to the database";
             return $this->response->json($data);
         }
 
@@ -155,17 +172,20 @@ class Games
         $gameName = Security::getDataPOST("game");
         if ($gameName === null || ($game = $this->database->getGame($gameName)) === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez saisir un nom de jeu valide";
+            $data["message"] = "This is not a valid game name";
             return $this->response->json($data);
         }
 
         if (($possession = $this->database->getPossession($user, $game)) === false) {
             $data["success"] = false;
-            $data["message"] = "Vous n'avez pas encore acheté ce jeu";
+            $data["message"] = "You didn't purchase this game yet";
             return $this->response->json($data);
         }
 
-        $data["link"] = $user->getHoloLensIpAddress();
+        $data["link"] = sprintf(
+        	"http://%s/AppManager.htm",
+        	$user->getHoloLensIpAddress()
+		);
         return $this->response->json($data);
     }
 }

@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <title>Virtual Deck</title>
-    <link rel="icon" type="image/x-icon" href="/2018/virtualdeck/images/favicon.ico" />
-    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/auth.css"/>
-    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/profile.css"/>
-    <link rel="stylesheet" href="/2018/virtualdeck/stylesheets/font-awesome.css">
+    <link rel="icon" type="image/x-icon" href="http://virtualdeck.local.com/images/favicon.ico" />
+    <link rel="stylesheet" href="http://virtualdeck.local.com/stylesheets/auth.css"/>
+    <link rel="stylesheet" href="http://virtualdeck.local.com/stylesheets/profile.css"/>
 </head>
 
 <body>
@@ -17,10 +16,11 @@
         <div id="username">{% username %}</div>
     </div>
     <div id="middle">
-        <div id="title">Paramètres du compte</div>
+        <div id="title">Account information</div>
     </div>
     <div id="right">
-        <div id="home"></div>
+        <div id="homepage"></div>
+        <div id="listing"></div>
         <div id="logout"></div>
     </div>
 </header>
@@ -29,11 +29,11 @@
     <div class="category">
         <div class="description">
             <div id="hololens_splash" class="splash"></div>
-            <div class="text">Informations HoloLens</div>
+            <div class="text">HoloLens information</div>
         </div>
         <div class="contents">
             <div class="entry">
-                <label for="holoLensIpAddress">Adresse IP</label>
+                <label for="holoLensIpAddress">IP Address</label>
                 <input id="holoLensIpAddress" type="text" class="field" value="{% holoLensIpAddress %}"/>
             </div>
         </div>
@@ -42,26 +42,26 @@
     <div class="category">
         <div class="description">
             <div id="avatar" class="splash"></div>
-            <div class="text">Informations de compte</div>
+            <div class="text">Profile information</div>
         </div>
         <div class="contents">
             <div class="entry">
-                <label for="pseudo">Pseudonyme</label>
+                <label for="pseudo">Username</label>
                 <input id="pseudo" type="text" class="field" value="{% username %}"/>
             </div>
             <div class="entry">
                 <label for="email">Email</label>
                 <input id="email" type="email" class="field"  value="{% email %}"/></div>
             <div class="entry">
-                <label for="password_old">Ancien mot de passe</label>
+                <label for="password_old">Old password</label>
                 <input id="password_old" type="password" class="field"/>
             </div>
             <div class="entry">
-                <label for="password">Nouveau mot de passe</label>
+                <label for="password">New password</label>
                 <input id="password" type="password" class="field"/>
             </div>
             <div class="entry">
-                <label for="password2">Confirmer le mot de passe</label>
+                <label for="password2">Confirm the new password</label>
                 <input id="password2" type="password" class="field" />
             </div>
         </div>
@@ -70,39 +70,39 @@
     <div class="category">
         <div class="description">
             <div id="purchase" class="splash"></div>
-            <div class="text">Informations de facturation</div>
+            <div class="text">Billing information</div>
         </div>
         <div class="contents">
             <div class="entry">
-                <label for="firstname">Prénom</label>
+                <label for="firstname">Firstname</label>
                 <input id="firstname" type="text" class="field"  value="{% firstname %}"/>
             </div>
             <div class="entry">
-                <label for="lastname">Nom</label>
+                <label for="lastname">Lastname</label>
                 <input id="lastname" type="text" class="field"  value="{% lastname %}"/>
             </div>
             <div class="entry">
-                <label for="address">Adresse</label>
+                <label for="address">Adress</label>
                 <input id="address" type="text" class="field"  value="{% address %}"/>
             </div>
             <div class="entry">
-                <label for="city">Ville</label>
+                <label for="city">City</label>
                 <input id="city" type="text" class="field"  value="{% city %}"/>
             </div>
             <div class="entry">
-                <label for="postal">Code postal</label>
+                <label for="postal">Postal code</label>
                 <input id="postal" type="text" class="field"  value="{% postal %}"/>
             </div>
             <div class="entry">
-                <label for="phone">Téléphone</label>
+                <label for="phone">Phone</label>
                 <input id="phone" type="text" class="field"  value="{% phone %}"/>
             </div>
         </div>
     </div>
 
     <div id="bottom">
-        <div id="feedback" class="inactive">...</div>
-        <div id="update">Mettre à jour</div>
+        <input type="button" id="feedback" class="inactive" value="..."/>
+        <input type="button" id="update" value="Update my profile"/>
     </div>
 </div>
 
@@ -110,7 +110,7 @@
 
 <footer>
     <div id="logo"></div>
-    <script type="text/javascript" src="/2018/virtualdeck/scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/2018/virtualdeck/scripts/auth/profile.js"></script>
+    <script type="text/javascript" src="http://virtualdeck.local.com/scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="http://virtualdeck.local.com/scripts/auth/profile.js"></script>
 </footer>
 </html>

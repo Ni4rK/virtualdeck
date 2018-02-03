@@ -2,12 +2,16 @@ var loadedVideos = {};
 
 $(document).ready(function() {
 
-    $("#home").on("click", function() {
-        window.location.href = "/2018/virtualdeck/auth/home.php";
+    $("#homepage").on("click", function() {
+        window.location.href = "http://virtualdeck.local.com/auth/home.php";
+    });
+
+    $("#listing").on("click", function() {
+        window.location.href = "http://virtualdeck.local.com/auth/games.php";
     });
 
     $("#logout").on("click", function() {
-        window.location.href = "/2018/virtualdeck/auth/logout.php";
+        window.location.href = "http://virtualdeck.local.com/auth/logout.php";
     });
 
     $("#feedback").on("click", function () {
@@ -28,7 +32,7 @@ $(document).ready(function() {
             postal = $("#postal").val(),
             phone = $("#phone").val();
         $.ajax({
-            url: "/auth/update.php",
+            url: "http://virtualdeck.local.com/auth/update.php",
             data: {
                 holoLensIpAddress: holoLensIpAddress,
                 username: username,
@@ -46,13 +50,13 @@ $(document).ready(function() {
             method: "post",
             success: function(data) {
                 if (data.success === true) {
-                    $("#feedback").removeClass("inactive error inactive").addClass("success").text(data.message);
+                    $("#feedback").removeClass("inactive error inactive").addClass("success").val(data.message);
                 } else {
-                    $("#feedback").removeClass("success inactive").addClass("error").text(data.message);
+                    $("#feedback").removeClass("success inactive").addClass("error").val(data.message);
                 }
             },
             error: function() {
-                $("#feedback").removeClass("success inactive").addClass("error").text("Une erreur est survenue");
+                $("#feedback").removeClass("success inactive").addClass("error").val("An error occured");
             }
         });
     });

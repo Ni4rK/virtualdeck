@@ -26,7 +26,7 @@ class Home
         }
 
         return $this->response->render("error.html.twig", [
-            "error" => "Vous devez vous authentifier pour accéder à cette page"
+            "error" => "You are not authentified. Please connect first to see this page"
         ]);
     }
 
