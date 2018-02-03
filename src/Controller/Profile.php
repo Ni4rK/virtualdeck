@@ -24,13 +24,13 @@ class Profile
     {
         if ($this->security->isAuthenticated() === false) {
             return $this->response->render("error.html.twig", [
-                "error" => "Vous devez vous authentifier pour accéder à cette page"
+                "error" => "You are not authentified. Please connect first to see this page"
             ]);
         }
 
         if ($this->database->connect() === false) {
             return $this->response->render("error.html.twig", [
-                "error" => "Impossible de se connecter à la base de données"
+                "error" => "Can't connect to the database"
             ]);
         }
 
@@ -53,18 +53,18 @@ class Profile
     {
         $data = [
             "success" => true,
-            "message" => "Les informations ont été mises à jour"
+            "message" => "Account information successfully updated"
         ];
 
         if ($this->security->isAuthenticated() === false) {
             $data["success"] = false;
-            $data["message"] = "Vous devez vous authentifier pour accéder à cette page";
+            $data["message"] = "You are not authentified. Please connect first to see this page";
             return $this->response->json($data);
         }
 
         if ($this->database->connect() === false) {
             $data["success"] = false;
-            $data["message"] = "Impossible de se connecter à la base de données";
+            $data["message"] = "Can't connect to the database";
             return $this->response->json($data);
         }
 

@@ -1,54 +1,44 @@
 #games {
+    z-index: 3;
     margin-top: 10vh;
     justify-content: space-evenly;
     align-items: center;
 }
 
-#home {
-    background-image: url("/2018/virtualdeck/images/home.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
-    width: 20%;
-    height: 60%;
-    cursor: pointer;
-
-}
-
-#logout {
-    background-image: url("/2018/virtualdeck/images/logout.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: center;
-    width: 20%;
-    height: 60%;
-    cursor: pointer;
-}
-
 #feedback {
+    font-family: Arial, serif;
+    font-size: 16px;
+    border: 0;
+    width: 30%;
+    height: 32px;
+    min-height: fit-content;
     position: fixed;
     bottom: 0;
     left: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
-    height: 5vh;
-    background-color: #f44336;
-    cursor: pointer;
+    color: #234f63;
+    background-color: lightcoral;
     padding: 0 5px;
 }
 
+#feedback:hover {
+    background-color: #c66b6b;
+}
+
 #feedback.success {
-    background-color: greenyellow;
+    background-color: lightgreen;
+}
+
+#feedback.success:hover {
+    background-color: #7acc7a;
 }
 
 .game {
     width: 80%;
     height: 10vh;
-    background-image: url("/2018/virtualdeck/images/cart.jpg");
+    background-image: url("http://virtualdeck.local.com/images/cart.jpg");
     color: white;
     margin: 5vh auto;
     display: flex;
@@ -97,27 +87,28 @@
 }
 
 .button {
-    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
+    font-family: Arial, serif;
+    font-weight: bold;
+    background-color: #d5d5d5;
+    border: 0;
     width: 25%;
-    height: 50%;
+    height: 32px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    transition: all 0.5s;
 }
 
 .button:hover {
-    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.4);
+    background-color: #c8c8c8;
 }
 
 .blocked {
-    background-color: lightgrey;
-    cursor: default;
+    background-color: #d5d5d5;
+    cursor: not-allowed;
 }
 
 .authorized {
-    background-color: greenyellow;
-    cursor: pointer;
+    cursor: default;
 }
 
 .picture {
@@ -138,50 +129,22 @@
     width: 100%;
 }
 
-.download {
-    background-image: url("/2018/virtualdeck/images/download.png");
-    background-size: 30%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.install {
-    background-image: url("/2018/virtualdeck/images/install.png");
-    background-size: 30%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.purchase {
-    width: 50%;
-    height: 60%;
-    background-image: url("/2018/virtualdeck/images/buy.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.price {
-    width: 50%;
-}
-
 #allgames {
     width: 30vw;
     min-width: fit-content;
-    margin: auto;
-    background-color: #008CBA;
-    cursor: pointer;
+    margin-left: 35vw;
+    color: #234f63;
+    text-transform: uppercase;
+    background-color: #c0d6df;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
-    font-family: sanchez, fantasy;
+    font-family: "Segoe UI", Helvetica, sans-serif;
     font-size: 13px;
-    font-variant: small-caps;
-    font-weight: bold;
-    overflow: hidden;
-    letter-spacing: .1em;
-    transition: all 1s ease;
+}
+
+#allgames:hover {
+    background-color: #adbfc6;
 }
 
 .video {
@@ -193,4 +156,40 @@
 
 video {
     width: 100%;
+}
+
+#loader {
+    z-index: 3;
+    background-image: url('http://virtualdeck.local.com/images/background.jpg');
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;;
+    align-items: center;
+}
+
+#hider {
+    z-index: 2;
+    background-image: url("http://virtualdeck.local.com/images/background.jpg");
+    position: fixed;;
+    top: 0;
+    left: 0;
+    width: 192px;
+    height: 100vh;
+}
+
+#microsoft {
+    position: fixed;
+    bottom: 0;
+    right: 130px;
+    background-image: url("http://virtualdeck.local.com/images/microsoft.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    width: 130px;
+    height: 130px;
 }

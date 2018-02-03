@@ -1,28 +1,24 @@
 @font-face {
     font-family: techno;
-    src: url("/2018/virtualdeck/fonts/ethnocentric.ttf");
-}
-
-@font-face {
-    font-family: sanchez;
-    src: url("/2018/virtualdeck/fonts/sanchez.otf");
+    src: url("http://virtualdeck.local.com/fonts/ethnocentric.ttf");
 }
 
 body {
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
-    font-family: sanchez, fantasy;
+    font-family: "Segoe UI", Helvetica, sans-serif;
 }
 
 .page {
     width: 100vw;
-    height: 100vh;
 }
 
 .text {
     font-size: 30px;
     margin: auto;
     text-align: center;
-    font-family: techno, fantasy;
+    font-family: techno, "Segoe UI", Helvetica, sans-serif;
 }
 
 #title {
@@ -38,11 +34,11 @@ body {
 }
 
 #logo {
-    background-image: url("/2018/virtualdeck/images/logo.png");
+    background-image: url("http://virtualdeck.local.com/images/logo.png");
 }
 
 #hololens {
-    background-image: url("/2018/virtualdeck/images/hololens.gif");
+    background-image: url("http://virtualdeck.local.com/images/hololens.gif");
 }
 
 #corpse {
@@ -65,30 +61,27 @@ body {
 }
 
 .button {
-    background-color: #008CBA;
-    cursor: pointer;
+    cursor: default;
+    color: #234f63;
+    text-transform: uppercase;
+    background-color: #c0d6df;
     border: none;
-    color: white;
     padding: 15px 32px;
     text-align: center;
-    font-family: sanchez, fantasy;
-    font-size: 13px;
-    font-variant: small-caps;
-    font-weight: bold;
-    overflow: hidden;
-    letter-spacing: .1em;
-    transition: all 1s ease;
+    font-family: "Segoe UI", Helvetica, sans-serif;
+}
+
+.button:hover {
+    background-color: #adbfc6;
 }
 
 #error {
-    position: absolute;
-    bottom: 15vh;
-    width: 20%;
-    margin: 0 40%;
-    background-color: #f44336;
-    text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    display:  flex;
+    justify-content: center;
+    margin: 20px auto;
+    background-color: lightcoral;
+    text-transform: none;
+    padding: 10px;
 }
 
 #controls {
@@ -115,29 +108,26 @@ body {
 }
 
 .field {
-    border: 2px solid #008CBA;
-    border-radius: 5px;
-    cursor: pointer;
+    border: 2px solid #c0d6df;
     padding: 10px;
     text-align: center;
     font-size: 13px;
-    transition: all 1s ease;
     margin: 5px;
 }
 
 #login_form .field {
-    width: 100%;
+    width: calc(100% - 34px);
 }
 
 #sign_form {
-    display: grid;
     background-color: white;
-    border: 2px solid #008CBA;
-    border-radius: 5px;
+    border: 2px solid #c0d6df;
     padding: 15px;
     width: 60vw;
-    height: 90vh;
-    margin: auto;
+    margin: 20px auto;
+    min-height: calc(100vh - 80px);
+    display:  grid;
+    align-content: space-around;
 }
 
 #sign_form .field {
@@ -158,6 +148,7 @@ label {
 #sign {
     margin: auto;
     text-align: center;
+    display: -webkit-box;
 }
 
 #sign .field {

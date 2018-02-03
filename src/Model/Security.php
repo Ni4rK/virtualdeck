@@ -50,13 +50,13 @@ class Security
         $password = md5(htmlspecialchars($password));
 
         if ($this->database->connect() === false) {
-            $this->lastError = "Impossible de se connecter à la base de données";
+            $this->lastError = "Can't connect to the database";
             return false;
         }
 
         $user = $this->database->getUser($email, $password);
         if ($user === false) {
-            $this->lastError = "Impossible de vous authentifier";
+            $this->lastError = "Invalid credentials";
             return false;
         }
 
@@ -97,32 +97,32 @@ class Security
         $phone = self::getDataPOST("phone");
 
         if ($username === null || empty($username)) {
-            $this->lastError = "Vous devez entrer un pseudonyme";
+            $this->lastError = "A username is required";
             return false;
         }
 
         if ($this->isValidEmail($email) === false) {
-            $this->lastError = "Vous devez entrer un email valide";
+            $this->lastError = "This is not a valid email";
             return false;
         }
 
         if ($this->isValidPassword($password) === false) {
-            $this->lastError = "Vous devez entrer un mot de passe valide";
+            $this->lastError = "Weak password (8 minimum characters including one special)";
             return false;
         }
 
         if ($password !== $password2) {
-            $this->lastError = "Veuillez re-confirmer le mot de passe";
+            $this->lastError = "Please re-confirm your password";
             return false;
         }
 
         if ($this->database->connect() === false) {
-            $this->lastError = "Impossible de se connecter à la base de données";
+            $this->lastError = "Can't connect to the database";
             return false;
         }
 
         if ($this->database->getUser($email) !== false) {
-            $this->lastError = "Un compte avec cet email existe déjà";
+            $this->lastError = "An account with this email already exists";
             return false;
         }
 
@@ -157,41 +157,42 @@ class Security
         $postal = self::getDataPOST("postal");
         $phone = self::getDataPOST("phone");
 
-        if ($username === null || empty($username)) {
-            $this->lastError = "Vous devez entrer un pseudonyme";
-            return false;
-        }
+		if ($username === null || empty($username)) {
+			$this->lastError = "A username is required";
+			return false;
+		}
 
-        if ($this->isValidEmail($email) === false) {
-            $this->lastError = "Vous devez entrer un email valide";
-            return false;
-        }
+		if ($this->isValidEmail($email) === false) {
+			$this->lastError = "This is not a valid email";
+			return false;
+		}
 
         if ($password !== null && empty($password) === false) {
             if ($user->getPassword() !== md5($passwordOld)) {
-                $this->lastError = "Ce n'est pas le bon mot de passe";
+                $this->lastError = "This is not the right password";
                 return false;
             }
 
             if ($this->isValidPassword($password) === false) {
-                $this->lastError = "Vous devez entrer un mot de passe valide";
+                $this->lastError = "Weak password (8 minimum characters including one special)";
                 return false;
             }
 
             if ($password !== $password2) {
-                $this->lastError = "Veuillez re-confirmer le mot de passe";
+                $this->lastError = "Please re-confirm your password";
                 return false;
             }
+
+			$user->setPassword(md5($password));
         }
 
         if ($this->database->connect() === false) {
-            $this->lastError = "Impossible de se connecter à la base de données";
+            $this->lastError = "Can't connect to the database";
             return false;
         }
 
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setPassword(md5($password));
         $user->setHoloLensIpAddress($holoLensIpAddress);
         $user->setFirstname($firstname);
         $user->setLastname($lastname);
@@ -199,8 +200,10 @@ class Security
         $user->setCity($city);
         $user->setPostal($postal);
         $user->setPhone($phone);
+
         $this->database->updateUser($user);
         $_SESSION["auth"] = $user->toJson();
+
         return true;
     }
 
